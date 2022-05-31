@@ -11,8 +11,8 @@ readme = "../../README.md"
 
 [features]
 default = []
-address20 = ["module-id/address20", "mv-core-types/address20"]
-address32 = ["module-id/address32", "mv-core-types/address32"]
+address20 = ["errmap/address20", "mv-core-types/address20"]
+address32 = ["errmap/address20", "mv-core-types/address32"]
 
 [dependencies]
 anyhow = "1"
@@ -21,6 +21,6 @@ clap = { version = "3.1.18", features = ["derive"] }
 clap_complete = "3.1.4"
 serde = { version = "1.0.137", features = ["derive"] }
 serde_json = "1.0.81"
-module-id = { version = "0.1.0", path = "../module-id" }
+errmap = { version = "0.1.0", path = "../errmap" }
 # Contains all of the BCS data we may deserialize
 mv-core-types = "0.1.0"

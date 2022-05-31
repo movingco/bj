@@ -2,10 +2,9 @@
 
 use anyhow::*;
 use clap::Parser;
+use errmap::ErrorMapping;
 use serde::{Deserialize, Serialize};
 use std::io::{self, Read};
-
-use crate::types;
 
 macro_rules! format_info {
     ($name:ident::$ty:ident) => {
@@ -44,7 +43,7 @@ impl KnownFormat {
     fn render(self, input: &[u8]) -> Result<String> {
         match self {
             KnownFormat::ErrorMapping => {
-                render_json::<move_core_types::errmap::ErrorMapping, types::ErrorMapping>(&input)
+                render_json::<move_core_types::errmap::ErrorMapping, ErrorMapping>(&input)
             }
         }
     }
