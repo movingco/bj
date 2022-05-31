@@ -14,6 +14,16 @@ pub struct ErrorMapping {
     pub module_error_maps: BTreeMap<ModuleIdData, BTreeMap<u64, ErrorDescription>>,
 }
 
+impl Extend<ErrorMapping> for ErrorMapping {
+    fn extend<T: IntoIterator<Item = ErrorMapping>>(&mut self, iter: T) {
+        iter.into_iter().fold(self, |acc, map| {
+            acc.error_categories.extend(map.error_categories);
+            acc.module_error_maps.extend(map.module_error_maps);
+            acc
+        });
+    }
+}
+
 impl From<move_core_types::errmap::ErrorMapping> for ErrorMapping {
     fn from(errmap: move_core_types::errmap::ErrorMapping) -> Self {
         ErrorMapping {
