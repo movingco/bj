@@ -1,7 +1,7 @@
 //! Move error map which can be represented as JSON.
 
 use module_id::ModuleIdData;
-use move_core_types::errmap::ErrorDescription;
+pub use move_core_types::errmap::ErrorDescription;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
