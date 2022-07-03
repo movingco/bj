@@ -6,7 +6,7 @@ A CLI for converting BCS-encoded messages into JSON.
 
 Run:
 
-```
+```bash
 # If on Diem
 cargo install bj
 
