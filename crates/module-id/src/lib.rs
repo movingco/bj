@@ -2,6 +2,7 @@
 
 use anyhow::Result;
 use move_core_types::{
+    account_address::AccountAddress,
     language_storage::{ModuleId, StructTag},
     parser::parse_struct_tag,
 };
@@ -13,6 +14,16 @@ use std::{fmt::Display, str::FromStr};
 pub struct ModuleIdData(ModuleId);
 
 impl ModuleIdData {
+    /// Gets the address of the module.
+    pub fn address(&self) -> &AccountAddress {
+        self.0.address()
+    }
+
+    /// Gets the name of the module as a [String].
+    pub fn name(&self) -> &str {
+        self.0.name().as_str()
+    }
+
     /// Renders the [ModuleIdData] as a short string.
     ///
     /// # Example
@@ -24,6 +35,11 @@ impl ModuleIdData {
     /// ```
     pub fn short_str_lossless(&self) -> String {
         self.0.short_str_lossless()
+    }
+
+    /// Gets the [ModuleId].
+    pub fn inner(&self) -> &ModuleId {
+        &self.0
     }
 }
 
