@@ -27,24 +27,24 @@ impl Extend<ErrorMapping> for ErrorMapping {
 impl From<move_core_types::errmap::ErrorMapping> for ErrorMapping {
     fn from(errmap: move_core_types::errmap::ErrorMapping) -> Self {
         ErrorMapping {
-            error_categories: errmap.error_categories.into(),
+            error_categories: errmap.error_categories,
             module_error_maps: errmap
                 .module_error_maps
                 .into_iter()
-                .map(|(k, v)| (k.into(), v.into()))
+                .map(|(k, v)| (k.into(), v))
                 .collect(),
         }
     }
 }
 
-impl Into<move_core_types::errmap::ErrorMapping> for ErrorMapping {
-    fn into(self) -> move_core_types::errmap::ErrorMapping {
+impl From<ErrorMapping> for move_core_types::errmap::ErrorMapping {
+    fn from(val: ErrorMapping) -> Self {
         move_core_types::errmap::ErrorMapping {
-            error_categories: self.error_categories.into(),
-            module_error_maps: self
+            error_categories: val.error_categories,
+            module_error_maps: val
                 .module_error_maps
                 .into_iter()
-                .map(|(k, v)| (k.into(), v.into()))
+                .map(|(k, v)| (k.into(), v))
                 .collect(),
         }
     }
