@@ -59,7 +59,6 @@ name = "bj-completions"
 version = "0.1.1"
 dependencies = [
  "anyhow",
- "bcs",
  "bj",
  "clap",
  "clap_complete",
