@@ -48,11 +48,21 @@ dependencies = [
  "anyhow",
  "bcs",
  "clap",
- "clap_complete",
  "errmap",
  "mv-core-types",
  "serde",
  "serde_json",
+]
+
+[[package]]
+name = "bj-completions"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "bj",
+ "clap",
+ "clap_complete",
 ]
 
 [[package]]
