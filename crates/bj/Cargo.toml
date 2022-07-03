@@ -1,7 +1,7 @@
 [package]
 name = "bj"
 description = "A CLI for converting BCS-encoded messages into JSON."
-version = "0.1.3"
+version = "0.1.4"
 homepage = "https://moving.wtf"
 repository = "https://github.com/movingco/bj"
 authors = ["Ian Macalinao <ian@moving.wtf>"]
