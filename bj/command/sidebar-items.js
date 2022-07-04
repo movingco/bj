@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["KnownFormat","The format of the data."]],"struct":[["Opts","Reads a BCS-encoded file from stdin and prints it."]]});

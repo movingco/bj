@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["generate","Generate a completions file for a specified shell at runtime."],["generate_to","Generate a completions file for a specified shell at compile-time."]],"mod":[["utils","Helpers for writing generators"]],"trait":[["Generator","Generator trait which can be used to write generators"]]});

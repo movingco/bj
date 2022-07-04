@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["bj"] = [{"text":"impl <a class=\"trait\" href=\"clap/derive/trait.Subcommand.html\" title=\"trait clap::derive::Subcommand\">Subcommand</a> for <a class=\"enum\" href=\"bj/command/enum.KnownFormat.html\" title=\"enum bj::command::KnownFormat\">KnownFormat</a>","synthetic":false,"types":["bj::command::KnownFormat"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

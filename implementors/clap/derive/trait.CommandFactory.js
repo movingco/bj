@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["bj"] = [{"text":"impl <a class=\"trait\" href=\"clap/derive/trait.CommandFactory.html\" title=\"trait clap::derive::CommandFactory\">CommandFactory</a> for <a class=\"struct\" href=\"bj/command/struct.Opts.html\" title=\"struct bj::command::Opts\">Opts</a>","synthetic":false,"types":["bj::command::Opts"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
