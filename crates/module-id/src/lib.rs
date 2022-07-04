@@ -45,7 +45,7 @@ impl ModuleIdData {
 
 impl Display for ModuleIdData {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        self.0.fmt(f)
+        self.short_str_lossless().fmt(f)
     }
 }
 
