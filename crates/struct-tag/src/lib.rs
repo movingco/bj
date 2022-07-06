@@ -1,4 +1,4 @@
-//! Wrapper type for serializing Move module IDs as strings.
+//! Wrapper type for serializing Move struct tags as strings.
 
 use anyhow::Result;
 use move_core_types::{language_storage::StructTag, parser::parse_struct_tag};
