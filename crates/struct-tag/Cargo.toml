@@ -1,0 +1,22 @@
+[package]
+name = "struct-tag"
+description = "Wrapper type for serializing Move struct tags as strings."
+version = "0.1.5"
+homepage = "https://moving.wtf"
+repository = "https://github.com/movingco/bj"
+authors = ["Ian Macalinao <ian@moving.wtf>"]
+license = "Apache-2.0"
+edition = "2021"
+
+[features]
+default = []
+address20 = ["mv-core-types/address20"]
+address32 = ["mv-core-types/address32"]
+
+[dependencies]
+anyhow = "1"
+serde = "1.0.137"
+mv-core-types = "0.1.0"
+
+[dev-dependencies]
+serde_json = "1.0.81"
