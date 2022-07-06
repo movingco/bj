@@ -1,7 +1,5 @@
-# module-id
+# struct-tag
 
-Move module ID Serde adapter which serializes/deserializes to `String`.
+Wrapper type for serializing Move struct tags as strings.
 
-## License
-
-`bj` is licensed under the Apache License, Version 2.0.
+License: Apache-2.0
