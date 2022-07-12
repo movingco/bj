@@ -16,7 +16,7 @@ address32 = ["module-id/address32", "mv-core-types/address32"]
 [dependencies]
 module-id = { version = "0.1.0", path = "../module-id" }
 mv-core-types = "0.1.0"
-serde = "1.0.137"
+serde = "1.0.139"
 
 [dev-dependencies]
 serde_json = "1.0.81"
