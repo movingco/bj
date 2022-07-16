@@ -1,13 +1,40 @@
 //! Wrapper type for serializing Move struct tags as strings.
 
 use anyhow::Result;
-use move_core_types::{language_storage::StructTag, parser::parse_struct_tag};
+use move_core_types::{
+    account_address::AccountAddress, language_storage::StructTag, parser::parse_struct_tag,
+};
+use schemars::{
+    schema::{InstanceType, SchemaObject, StringValidation},
+    JsonSchema,
+};
 use serde::{Deserialize, Serialize, Serializer};
 use std::{fmt::Display, ops::Deref, str::FromStr};
 
 /// Wrapper around [StructTag] which is serialized as a string.
 #[derive(Debug, PartialEq, Hash, Eq, Clone, PartialOrd, Ord)]
 pub struct StructTagData(StructTag);
+
+impl JsonSchema for StructTagData {
+    fn schema_name() -> String {
+        "StructTag".to_string()
+    }
+
+    fn json_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+        SchemaObject {
+            instance_type: Some(InstanceType::String.into()),
+            string: Some(Box::new(StringValidation {
+                pattern: Some(format!(
+                    "^0x[a-fA-F0-9]{{1,{}}}::[\\w]+::[\\w]+$",
+                    AccountAddress::LENGTH
+                )),
+                ..Default::default()
+            })),
+            ..Default::default()
+        }
+        .into()
+    }
+}
 
 impl Deref for StructTagData {
     type Target = StructTag;

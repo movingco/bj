@@ -1,6 +1,6 @@
 [package]
-name = "module-id"
-description = "Wrapper type for serializing Move module IDs as strings."
+name = "account-address"
+description = "Wrapper type for serializing Move account addresses as strings."
 version = "0.1.5"
 homepage = "https://moving.wtf"
 repository = "https://github.com/movingco/bj"

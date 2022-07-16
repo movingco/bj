@@ -6,12 +6,37 @@ use move_core_types::{
     language_storage::{ModuleId, StructTag},
     parser::parse_struct_tag,
 };
+use schemars::{
+    schema::{InstanceType, SchemaObject, StringValidation},
+    JsonSchema,
+};
 use serde::{Deserialize, Serialize, Serializer};
 use std::{fmt::Display, str::FromStr};
 
 /// Wrapper around [ModuleId] which is serialized as a string.
 #[derive(Debug, PartialEq, Hash, Eq, Clone, PartialOrd, Ord)]
 pub struct ModuleIdData(ModuleId);
+
+impl JsonSchema for ModuleIdData {
+    fn schema_name() -> String {
+        "ModuleId".to_string()
+    }
+
+    fn json_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+        SchemaObject {
+            instance_type: Some(InstanceType::String.into()),
+            string: Some(Box::new(StringValidation {
+                pattern: Some(format!(
+                    "^0x[a-fA-F0-9]{{1,{}}}::[\\w]+$",
+                    AccountAddress::LENGTH
+                )),
+                ..Default::default()
+            })),
+            ..Default::default()
+        }
+        .into()
+    }
+}
 
 impl ModuleIdData {
     /// Gets the address of the module.
