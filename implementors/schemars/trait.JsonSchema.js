@@ -1,0 +1,6 @@
+(function() {var implementors = {};
+implementors["account_address"] = [{"text":"impl <a class=\"trait\" href=\"schemars/trait.JsonSchema.html\" title=\"trait schemars::JsonSchema\">JsonSchema</a> for <a class=\"struct\" href=\"account_address/struct.AccountAddressData.html\" title=\"struct account_address::AccountAddressData\">AccountAddressData</a>","synthetic":false,"types":["account_address::AccountAddressData"]}];
+implementors["module_id"] = [{"text":"impl <a class=\"trait\" href=\"schemars/trait.JsonSchema.html\" title=\"trait schemars::JsonSchema\">JsonSchema</a> for <a class=\"struct\" href=\"module_id/struct.ModuleIdData.html\" title=\"struct module_id::ModuleIdData\">ModuleIdData</a>","synthetic":false,"types":["module_id::ModuleIdData"]}];
+implementors["schemars"] = [];
+implementors["struct_tag"] = [{"text":"impl <a class=\"trait\" href=\"schemars/trait.JsonSchema.html\" title=\"trait schemars::JsonSchema\">JsonSchema</a> for <a class=\"struct\" href=\"struct_tag/struct.StructTagData.html\" title=\"struct struct_tag::StructTagData\">StructTagData</a>","synthetic":false,"types":["struct_tag::StructTagData"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
