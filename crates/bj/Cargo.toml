@@ -22,4 +22,4 @@ serde = { version = "1.0.137", features = ["derive"] }
 serde_json = "1.0.81"
 errmap = { version = "0.1.0", path = "../errmap" }
 # Contains all of the BCS data we may deserialize
-mv-core-types = "0.1.0"
+mv-core-types = "0.2.1"

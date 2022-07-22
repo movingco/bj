@@ -16,7 +16,7 @@ address32 = ["mv-core-types/address32"]
 [dependencies]
 anyhow = "1"
 serde = "1.0.137"
-mv-core-types = "0.1.0"
+mv-core-types = "0.2.1"
 schemars = "0.8"
 
 [dev-dependencies]
