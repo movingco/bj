@@ -209,6 +209,7 @@ checksum = "349d5a591cd28b49e1d1037471617a32ddcda5731b99419008085f72d5a53836"
 name = "module-id"
 version = "0.1.6"
 dependencies = [
+ "account-address",
  "anyhow",
  "mv-core-types",
  "schemars",
@@ -434,6 +435,7 @@ name = "struct-tag"
 version = "0.1.6"
 dependencies = [
  "anyhow",
+ "module-id",
  "mv-core-types",
  "schemars",
  "serde",

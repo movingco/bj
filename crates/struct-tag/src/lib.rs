@@ -1,6 +1,7 @@
 //! Wrapper type for serializing Move struct tags as strings.
 
 use anyhow::Result;
+pub use module_id::*;
 pub use move_core_types::language_storage::StructTag;
 use move_core_types::{
     account_address::AccountAddress, parser::parse_struct_tag as parse_struct_tag_move,
@@ -15,6 +16,23 @@ use std::{fmt::Display, ops::Deref, str::FromStr};
 /// Wrapper around [StructTag] which is serialized as a string.
 #[derive(Debug, PartialEq, Hash, Eq, Clone, PartialOrd, Ord)]
 pub struct StructTagData(StructTag);
+
+impl StructTagData {
+    /// Gets the serializable address.
+    pub fn address_data(&self) -> AccountAddressData {
+        self.into()
+    }
+
+    /// Gets the serializable module ID.
+    pub fn module_id_data(&self) -> ModuleIdData {
+        self.into()
+    }
+
+    /// Gets the [StructTag].
+    pub fn inner(&self) -> &StructTag {
+        self.into()
+    }
+}
 
 impl JsonSchema for StructTagData {
     fn schema_name() -> String {
@@ -69,6 +87,36 @@ impl From<StructTag> for StructTagData {
 impl From<StructTagData> for StructTag {
     fn from(id: StructTagData) -> Self {
         id.0
+    }
+}
+
+impl<'a> From<&'a StructTagData> for &'a StructTag {
+    fn from(id: &'a StructTagData) -> Self {
+        &id.0
+    }
+}
+
+impl From<StructTagData> for AccountAddress {
+    fn from(val: StructTagData) -> Self {
+        val.0.address
+    }
+}
+
+impl From<&StructTagData> for AccountAddressData {
+    fn from(val: &StructTagData) -> Self {
+        val.0.address.into()
+    }
+}
+
+impl From<StructTagData> for ModuleId {
+    fn from(val: StructTagData) -> Self {
+        val.0.module_id()
+    }
+}
+
+impl From<&StructTagData> for ModuleIdData {
+    fn from(val: &StructTagData) -> Self {
+        val.0.module_id().into()
     }
 }
 
