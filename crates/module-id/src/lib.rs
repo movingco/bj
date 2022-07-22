@@ -7,7 +7,7 @@ use schemars::{
     JsonSchema,
 };
 use serde::{Deserialize, Serialize, Serializer};
-use std::{fmt::Display, str::FromStr};
+use std::{fmt::Display, ops::Deref, str::FromStr};
 
 // Re-export some types
 pub use move_core_types::{account_address::AccountAddress, language_storage::ModuleId};
@@ -67,6 +67,14 @@ impl ModuleIdData {
     }
 }
 
+impl Deref for ModuleIdData {
+    type Target = ModuleId;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
 impl Display for ModuleIdData {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         self.short_str_lossless().fmt(f)
@@ -82,21 +90,9 @@ impl Serialize for ModuleIdData {
     }
 }
 
-impl From<&ModuleId> for ModuleIdData {
-    fn from(id: &ModuleId) -> Self {
-        Self(id.clone())
-    }
-}
-
 impl From<ModuleId> for ModuleIdData {
     fn from(id: ModuleId) -> Self {
         Self(id)
-    }
-}
-
-impl From<&ModuleIdData> for ModuleId {
-    fn from(id: &ModuleIdData) -> Self {
-        id.0.clone()
     }
 }
 
@@ -130,9 +126,9 @@ impl FromStr for ModuleIdData {
 /// # Example
 ///
 /// ```
-/// use move_core_types::language_storage::ModuleId;
-/// let id: ModuleId = module_id::parse_module_id("0x1::Errors").unwrap().into();
-/// assert_eq!("0x1::Errors", id.short_str_lossless());
+/// use module_id::*;
+/// let id: ModuleIdData = parse_module_id("0x1::Errors").unwrap();
+/// assert_eq!("0x1::Errors", id.to_string());
 /// ```
 pub fn parse_module_id(raw: &str) -> Result<ModuleIdData> {
     ModuleIdData::from_str(raw)

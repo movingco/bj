@@ -2,7 +2,9 @@
 
 use anyhow::Result;
 pub use move_core_types::language_storage::StructTag;
-use move_core_types::{account_address::AccountAddress, parser::parse_struct_tag};
+use move_core_types::{
+    account_address::AccountAddress, parser::parse_struct_tag as parse_struct_tag_move,
+};
 use schemars::{
     schema::{InstanceType, SchemaObject, StringValidation},
     JsonSchema,
@@ -58,21 +60,9 @@ impl Serialize for StructTagData {
     }
 }
 
-impl From<&StructTag> for StructTagData {
-    fn from(id: &StructTag) -> Self {
-        Self(id.clone())
-    }
-}
-
 impl From<StructTag> for StructTagData {
     fn from(id: StructTag) -> Self {
         Self(id)
-    }
-}
-
-impl From<&StructTagData> for StructTag {
-    fn from(id: &StructTagData) -> Self {
-        id.0.clone()
     }
 }
 
@@ -88,9 +78,7 @@ impl<'de> Deserialize<'de> for StructTagData {
         D: serde::Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
-        Ok(parse_struct_tag(&s)
-            .map_err(serde::de::Error::custom)?
-            .into())
+        parse_struct_tag(&s).map_err(serde::de::Error::custom)
     }
 }
 
@@ -98,31 +86,30 @@ impl FromStr for StructTagData {
     type Err = anyhow::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(parse_struct_tag(&format!("{}::Dummy", s))?.into())
+        Ok(parse_struct_tag_move(s)?.into())
     }
 }
 
-/// Parses a module ID.
+/// Parses a struct tag.
 ///
 /// # Example
 ///
 /// ```
-/// use move_core_types::language_storage::StructTag;
-/// let id: StructTag = module_id::parse_module_id("0x1::Errors").unwrap().into();
-/// assert_eq!("0x1::Errors", id.short_str_lossless());
+/// use struct_tag::*;
+/// let id: StructTagData = struct_tag::parse_struct_tag("0x1::Errors::Errors").unwrap();
+/// assert_eq!("0x1::Errors::Errors", id.to_string());
 /// ```
-pub fn parse_module_id(raw: &str) -> Result<StructTagData> {
+pub fn parse_struct_tag(raw: &str) -> Result<StructTagData> {
     StructTagData::from_str(raw)
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::StructTagData;
-    use move_core_types::parser::parse_struct_tag;
+    use super::*;
 
     #[test]
     fn test_serde() {
-        let my_struct_tag: StructTagData = parse_struct_tag("0x1::A::B").unwrap().into();
+        let my_struct_tag: StructTagData = parse_struct_tag("0x1::A::B").unwrap();
 
         let ser = serde_json::to_string(&my_struct_tag).unwrap();
         let des: StructTagData = serde_json::from_str(&ser).unwrap();
