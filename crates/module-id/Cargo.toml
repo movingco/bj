@@ -1,7 +1,7 @@
 [package]
 name = "module-id"
 description = "Wrapper type for serializing Move module IDs as strings."
-version = "0.1.6"
+version = "0.2.0"
 homepage = "https://moving.wtf"
 repository = "https://github.com/movingco/bj"
 authors = ["Ian Macalinao <ian@moving.wtf>"]
@@ -14,7 +14,7 @@ address20 = ["move-core-types/address20", "account-address/address20"]
 address32 = ["move-core-types/address32", "account-address/address32"]
 
 [dependencies]
-account-address = { version = "0.1.6", path = "../account-address" }
+account-address = { version = "0.2.0", path = "../account-address" }
 anyhow = "1"
 move-core-types = { version = "0.2.1", package = "mv-core-types" }
 schemars = "0.8"

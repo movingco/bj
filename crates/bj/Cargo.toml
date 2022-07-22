@@ -1,7 +1,7 @@
 [package]
 name = "bj"
 description = "A CLI for converting BCS-encoded messages into JSON."
-version = "0.1.6"
+version = "0.2.0"
 homepage = "https://moving.wtf"
 repository = "https://github.com/movingco/bj"
 authors = ["Ian Macalinao <ian@moving.wtf>"]
@@ -20,6 +20,6 @@ bcs = "0.1.3"
 clap = { version = "3.1.18", features = ["derive"] }
 serde = { version = "1.0.137", features = ["derive"] }
 serde_json = "1.0.81"
-errmap = { version = "0.1.0", path = "../errmap" }
+errmap = { version = "0.2.0", path = "../errmap" }
 # Contains all of the BCS data we may deserialize
 move-core-types = { version = "0.2.1", package = "mv-core-types" }

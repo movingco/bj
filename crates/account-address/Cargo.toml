@@ -1,7 +1,7 @@
 [package]
 name = "account-address"
 description = "Wrapper type for serializing Move account addresses as strings."
-version = "0.1.6"
+version = "0.2.0"
 homepage = "https://moving.wtf"
 repository = "https://github.com/movingco/bj"
 authors = ["Ian Macalinao <ian@moving.wtf>"]

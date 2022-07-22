@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "account-address"
-version = "0.1.6"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "mv-core-types",
@@ -54,7 +54,7 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
 name = "bj"
-version = "0.1.6"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "bcs",
@@ -67,7 +67,7 @@ dependencies = [
 
 [[package]]
 name = "bj-completions"
-version = "0.1.6"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "bj",
@@ -137,7 +137,7 @@ checksum = "9d07a982d1fb29db01e5a59b1918e03da4df7297eaeee7686ac45542fd4e59c8"
 
 [[package]]
 name = "errmap"
-version = "0.1.6"
+version = "0.2.0"
 dependencies = [
  "module-id",
  "mv-core-types",
@@ -207,7 +207,7 @@ checksum = "349d5a591cd28b49e1d1037471617a32ddcda5731b99419008085f72d5a53836"
 
 [[package]]
 name = "module-id"
-version = "0.1.6"
+version = "0.2.0"
 dependencies = [
  "account-address",
  "anyhow",
@@ -432,7 +432,7 @@ checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
 
 [[package]]
 name = "struct-tag"
-version = "0.1.6"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "module-id",
