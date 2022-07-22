@@ -110,7 +110,7 @@
 </pre><pre class="rust"><code><span class="doccomment">//! Wrapper type for serializing Move account addresses as strings.</span>
 
 <span class="kw">use</span> <span class="ident">anyhow::Result</span>;
-<span class="kw">use</span> <span class="ident">move_core_types::account_address::AccountAddress</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">move_core_types::account_address::AccountAddress</span>;
 <span class="kw">use</span> <span class="ident">schemars</span>::{
     <span class="ident">schema</span>::{<span class="ident">InstanceType</span>, <span class="ident">SchemaObject</span>, <span class="ident">StringValidation</span>},
     <span class="ident">JsonSchema</span>,
