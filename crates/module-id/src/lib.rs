@@ -1,17 +1,16 @@
 //! Wrapper type for serializing Move module IDs as strings.
 
 use anyhow::Result;
-use move_core_types::{
-    account_address::AccountAddress,
-    language_storage::{ModuleId, StructTag},
-    parser::parse_struct_tag,
-};
+use move_core_types::{language_storage::StructTag, parser::parse_struct_tag};
 use schemars::{
     schema::{InstanceType, SchemaObject, StringValidation},
     JsonSchema,
 };
 use serde::{Deserialize, Serialize, Serializer};
 use std::{fmt::Display, str::FromStr};
+
+// Re-export some types
+pub use move_core_types::{account_address::AccountAddress, language_storage::ModuleId};
 
 /// Wrapper around [ModuleId] which is serialized as a string.
 #[derive(Debug, PartialEq, Hash, Eq, Clone, PartialOrd, Ord)]

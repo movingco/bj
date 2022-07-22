@@ -10,12 +10,12 @@ edition = "2021"
 
 [features]
 default = []
-address20 = ["module-id/address20", "mv-core-types/address20"]
-address32 = ["module-id/address32", "mv-core-types/address32"]
+address20 = ["module-id/address20", "move-core-types/address20"]
+address32 = ["module-id/address32", "move-core-types/address32"]
 
 [dependencies]
 module-id = { version = "0.1.0", path = "../module-id" }
-mv-core-types = "0.1.0"
+move-core-types = { version = "0.2.1", package = "mv-core-types" }
 serde = "1.0.137"
 
 [dev-dependencies]

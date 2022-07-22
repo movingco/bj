@@ -1,9 +1,8 @@
 //! Wrapper type for serializing Move struct tags as strings.
 
 use anyhow::Result;
-use move_core_types::{
-    account_address::AccountAddress, language_storage::StructTag, parser::parse_struct_tag,
-};
+pub use move_core_types::language_storage::StructTag;
+use move_core_types::{account_address::AccountAddress, parser::parse_struct_tag};
 use schemars::{
     schema::{InstanceType, SchemaObject, StringValidation},
     JsonSchema,

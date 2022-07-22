@@ -1,7 +1,7 @@
 //! Wrapper type for serializing Move account addresses as strings.
 
 use anyhow::Result;
-use move_core_types::account_address::AccountAddress;
+pub use move_core_types::account_address::AccountAddress;
 use schemars::{
     schema::{InstanceType, SchemaObject, StringValidation},
     JsonSchema,
