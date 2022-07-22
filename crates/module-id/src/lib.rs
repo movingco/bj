@@ -2,9 +2,8 @@
 
 pub use account_address::{AccountAddress, AccountAddressData};
 use anyhow::Result;
-use move_core_types::{
-    identifier::Identifier, language_storage::StructTag, parser::parse_struct_tag,
-};
+pub use move_core_types::{ident_str, identifier::Identifier};
+use move_core_types::{language_storage::StructTag, parser::parse_struct_tag};
 use schemars::{
     schema::{InstanceType, SchemaObject, StringValidation},
     JsonSchema,
@@ -40,15 +39,13 @@ impl JsonSchema for ModuleIdData {
     }
 }
 
-/// Creates a new [Identifier].
-pub fn new_identifier(ident: &str) -> Result<Identifier> {
-    Identifier::new(ident)
-}
-
 impl ModuleIdData {
     /// Creates a new [ModuleIdData].
     pub fn new(address: AccountAddress, ident: &str) -> Result<ModuleIdData> {
-        Ok(ModuleIdData(ModuleId::new(address, new_identifier(ident)?)))
+        Ok(ModuleIdData(ModuleId::new(
+            address,
+            Identifier::new(ident)?,
+        )))
     }
 
     /// Gets the JSON-serializable address.
