@@ -10,8 +10,8 @@ edition = "2021"
 
 [features]
 default = []
-address20 = ["move-core-types/address20"]
-address32 = ["move-core-types/address32"]
+address20 = ["move-core-types/address20", "account-address/address20"]
+address32 = ["move-core-types/address32", "account-address/address32"]
 
 [dependencies]
 account-address = { version = "0.1.6", path = "../account-address" }

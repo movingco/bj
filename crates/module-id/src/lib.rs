@@ -1,6 +1,6 @@
 //! Wrapper type for serializing Move module IDs as strings.
 
-pub use account_address::AccountAddressData;
+pub use account_address::{AccountAddress, AccountAddressData};
 use anyhow::Result;
 use move_core_types::{language_storage::StructTag, parser::parse_struct_tag};
 use schemars::{
@@ -11,7 +11,7 @@ use serde::{Deserialize, Serialize, Serializer};
 use std::{fmt::Display, ops::Deref, str::FromStr};
 
 // Re-export some types
-pub use move_core_types::{account_address::AccountAddress, language_storage::ModuleId};
+pub use move_core_types::language_storage::ModuleId;
 
 /// Wrapper around [ModuleId] which is serialized as a string.
 #[derive(Debug, PartialEq, Hash, Eq, Clone, PartialOrd, Ord)]
@@ -125,13 +125,11 @@ pub fn parse_module_id(raw: &str) -> Result<ModuleIdData> {
 
 #[cfg(test)]
 mod tests {
-    use move_core_types::parser::parse_struct_tag;
-
-    use crate::ModuleIdData;
+    use crate::{parse_module_id, ModuleIdData};
 
     #[test]
     fn test_serde() {
-        let my_module_id = ModuleIdData(parse_struct_tag("0x1::A::B").unwrap().module_id());
+        let my_module_id = parse_module_id("0x1::A").unwrap();
 
         let ser = serde_json::to_string(&my_module_id).unwrap();
         let des: ModuleIdData = serde_json::from_str(&ser).unwrap();

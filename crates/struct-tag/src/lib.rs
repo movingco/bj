@@ -3,9 +3,7 @@
 use anyhow::Result;
 pub use module_id::*;
 pub use move_core_types::language_storage::StructTag;
-use move_core_types::{
-    account_address::AccountAddress, parser::parse_struct_tag as parse_struct_tag_move,
-};
+use move_core_types::parser::parse_struct_tag as parse_struct_tag_move;
 use schemars::{
     schema::{InstanceType, SchemaObject, StringValidation},
     JsonSchema,
