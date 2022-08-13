@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize, Serializer};
 use std::{fmt::Display, ops::Deref, str::FromStr};
 
 /// Wrapper around [AccountAddress] which is serialized as a string.
-#[derive(Copy, Debug, PartialEq, Hash, Eq, Clone, PartialOrd, Ord)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AccountAddressData(AccountAddress);
 
 impl JsonSchema for AccountAddressData {
