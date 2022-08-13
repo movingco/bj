@@ -15,7 +15,7 @@ address32 = ["module-id/address32", "move-core-types/address32"]
 
 [dependencies]
 module-id = { version = "0.2.0", path = "../module-id" }
-move-core-types = { version = "0.2.1", package = "mv-core-types" }
+move-core-types = { version = "0.3.1", package = "mv-core-types" }
 serde = "1.0.137"
 
 [dev-dependencies]
