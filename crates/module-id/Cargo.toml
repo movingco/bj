@@ -18,7 +18,7 @@ account-address = { version = "0.2.0", path = "../account-address" }
 anyhow = "1"
 move-core-types = { version = "0.3.1", package = "mv-core-types" }
 schemars = "0.8"
-serde = "1.0.137"
+serde = "1.0.145"
 
 [dev-dependencies]
 serde_json = "1.0.81"
