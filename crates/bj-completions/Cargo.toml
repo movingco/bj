@@ -17,4 +17,4 @@ address32 = ["bj/address32"]
 anyhow = "1"
 bj = { version = "0.2.0", path = "../bj" }
 clap = { version = "3.1.18", features = ["derive"] }
-clap_complete = "3.1.4"
+clap_complete = "4.0.1"
